@@ -10,7 +10,7 @@ int preparationTime(std::vector<std::string> layers, int avg_prep_time) {
 }
 
 amount quantities(std::vector<std::string> layers) {
-    amount* quants = new amount{};
+    amount quants{};
     int num_of_noodles{0};
     int num_of_sauce{0};
     int size = layers.size();
@@ -19,22 +19,22 @@ amount quantities(std::vector<std::string> layers) {
         else if (layers[i] == "sauce") {num_of_sauce++;}
         else {continue;}
     }
-    quants->noodles = 50 * num_of_noodles;
-    quants->sauce = 0.2 * num_of_sauce;
+    quants.noodles = 50 * num_of_noodles;
+    quants.sauce = 0.2 * num_of_sauce;
 
-    return *quants;
+    return quants;
 }
 
 void addSecretIngredient(std::vector<std::string>& myList, const std::vector<std::string> friendsList) {
     int friend_size = friendsList.size();
     std::string secret_ingredient = friendsList[friend_size - 1];
-    (myList).pop_back();
-    (myList).push_back(secret_ingredient);
+    myList.pop_back();
+    myList.push_back(secret_ingredient);
 }
 
 void addSecretIngredient(std::vector<std::string>& myList, std::string secretIngredient) {
-    (myList).pop_back();
-    (myList).push_back(secretIngredient);
+    myList.pop_back();
+    myList.push_back(secretIngredient);
 }
 
 std::vector<double> scaleRecipe(const std::vector<double> quantities, int portions) {
